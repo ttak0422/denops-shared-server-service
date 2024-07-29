@@ -1,3 +1,4 @@
+{ denops-vim }:
 {
   config,
   pkgs,
@@ -14,8 +15,9 @@ in
     launchd.user.agents.denopsSharedServer = {
       script = concatStringsSep " " (
         [
-          "${getBin cfg.package}/bin/deno"
+          "${getBin cfg.denoPackage}/bin/deno"
           "run"
+          "${denops-vim}/denops/@denops-private/cli.ts"
         ]
         ++ cfg.denoArgs
         ++ [

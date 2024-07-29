@@ -5,7 +5,7 @@ in
 {
   services.denopsSharedServer = {
     enable = mkEnableOption "enable denops-shared-server";
-    package = mkOption {
+    denoPackage = mkOption {
       type = types.package;
       default = pkgs.deno;
     };
