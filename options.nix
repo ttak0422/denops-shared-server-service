@@ -19,10 +19,7 @@ in
     };
     denoArgs = mkOption {
       type = with types; listOf str;
-      default = [
-        "-A"
-        "--no-lock"
-      ];
+      default = [ ];
     };
   };
 }

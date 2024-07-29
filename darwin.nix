@@ -17,6 +17,8 @@ in
         [
           "${getBin cfg.denoPackage}/bin/deno"
           "run"
+          "-A"
+          "--no-lock"
           "${denops-vim}/denops/@denops-private/cli.ts"
         ]
         ++ cfg.denoArgs
