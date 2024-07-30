@@ -26,7 +26,8 @@ in
     };
     cliPath = mkOption {
       type = types.str;
-      description = "absolute path to cli.ts";
+      default = "denops/@denops-private/cli.ts";
+      description = "relative path to cli.ts";
     };
   };
 }

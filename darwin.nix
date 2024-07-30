@@ -1,3 +1,4 @@
+self:
 {
   config,
   pkgs,
@@ -6,6 +7,7 @@
 }:
 let
   inherit (lib) mkIf concatStringsSep getBin;
+  inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) denops-vim;
   cfg = config.services.denopsSharedServer;
 in
 {
@@ -19,7 +21,7 @@ in
         ]
         ++ cfg.denoArgs
         ++ [
-          "${cfg.cliPath}"
+          "${denops-vim}/${cfg.cliPath}"
           "--hostname=${cfg.hostName}"
           "--port=${toString cfg.port}"
         ]
