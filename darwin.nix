@@ -1,4 +1,3 @@
-{ denops-vim }:
 {
   config,
   pkgs,
@@ -20,7 +19,7 @@ in
         ]
         ++ cfg.denoArgs
         ++ [
-          "${denops-vim}/denops/@denops-private/cli.ts"
+          "${cfg.cliPath}"
           "--hostname=${cfg.hostName}"
           "--port=${toString cfg.port}"
         ]

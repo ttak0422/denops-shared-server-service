@@ -20,9 +20,13 @@ in
     denoArgs = mkOption {
       type = with types; listOf str;
       default = [
-          "-A"
-          "--no-lock"
+        "-A"
+        "--no-lock"
       ];
+    };
+    cliPath = mkOption {
+      type = types.str;
+      description = "absolute path to cli.ts";
     };
   };
 }
