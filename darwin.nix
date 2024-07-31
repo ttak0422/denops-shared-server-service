@@ -14,19 +14,19 @@ in
   options = import ./options.nix { inherit pkgs; };
   config = mkIf cfg.enable {
     launchd.user.agents.denopsSharedServer = {
-      script = concatStringsSep " " (
-        [
-          "${getBin cfg.denoPackage}/bin/deno"
-          "run"
-        ]
-        ++ cfg.denoArgs
-        ++ [
-          "${denops-vim}/${cfg.cliPath}"
-          "--hostname=${cfg.hostName}"
-          "--port=${toString cfg.port}"
-        ]
-      );
+      path = [ config.environment.systemPath ];
       serviceConfig = {
+        ProgramArguments =
+          [
+            "${getBin cfg.denoPackage}/bin/deno"
+            "run"
+          ]
+          ++ cfg.denoArgs
+          ++ [
+            "${denops-vim}/${cfg.cliPath}"
+            "--hostname=${cfg.hostName}"
+            "--port=${toString cfg.port}"
+          ];
         KeepAlive = true;
         RunAtLoad = true;
       };
