@@ -19,6 +19,8 @@
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (_: {
       systems = [
+        "x86_64-linux"
+        "aarch64-linux"
         "x86_64-darwin"
         "aarch64-darwin"
       ];
@@ -32,7 +34,8 @@
           };
         };
     })
-  // {
-    darwinModules.default = import ./darwin.nix self;
-  };
+    // {
+      darwinModules.default = import ./darwin.nix self;
+      nixosModules.default = import ./linux.nix self;
+    };
 }
